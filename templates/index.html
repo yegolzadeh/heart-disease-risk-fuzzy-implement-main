@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease Risk Diagnosis - Fuzzy Expert System</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #e8f5e9, #f1f8e9);
+            margin: 0;
+            padding: 20px;
+            color: #2e7d32;
+        }
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+        header {
+            background: linear-gradient(to right, #1b5e20, #388e3c);
+            color: white;
+            padding: 35px;
+            text-align: center;
+        }
+        h1 { margin: 0; font-size: 28px; }
+        .subtitle { font-size: 16px; margin-top: 10px; opacity: 0.95; }
+        .section {
+            padding: 35px;
+        }
+        .card {
+            background: #f9fdfa;
+            border-radius: 14px;
+            padding: 28px;
+            margin-bottom: 30px;
+            border: 1px solid #c8e6c9;
+        }
+        h2 {
+            color: #1b5e20;
+            border-bottom: 3px solid #4caf50;
+            padding-bottom: 12px;
+            margin-bottom: 25px;
+            font-size: 22px;
+        }
+        form {
+            display: grid;
+            gap: 20px;
+        }
+        label {
+            font-weight: 600;
+            color: #2e7d32;
+        }
+        .info {
+            font-size: 14px;
+            color: #558b2f;
+            margin-top: 6px;
+            line-height: 1.5;
+            background: #e8f5e9;
+            padding: 10px;
+            border-radius: 8px;
+            border-left: 4px solid #4caf50;
+        }
+        input[type="number"], input[type="file"] {
+            padding: 14px;
+            border: 1px solid #a5d6a7;
+            border-radius: 10px;
+            font-size: 16px;
+            background: #f1f8e9;
+        }
+        button {
+            background: linear-gradient(to right, #2e7d32, #388e3c);
+            color: white;
+            padding: 16px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        button:hover {
+            background: linear-gradient(to right, #1b5e20, #2e7d32);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(46, 125, 50, 0.3);
+        }
+        .result {
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            color: #1b5e20;
+            background: #c8e6c9;
+            padding: 25px;
+            border-radius: 14px;
+            margin: 25px 0;
+            border: 3px solid #4caf50;
+        }
+        .flash {
+            padding: 18px;
+            background: #e8f5e9;
+            border-radius: 10px;
+            margin: 25px 0;
+            text-align: center;
+            font-weight: bold;
+            color: #2e7d32;
+            border: 1px solid #a5d6a7;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+        }
+        th, td {
+            padding: 14px;
+            text-align: center;
+            border: 1px solid #a5d6a7;
+        }
+        th {
+            background: #4caf50;
+            color: white;
+        }
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #e8f5e9;
+            font-size: 14px;
+            color: #558b2f;
+            border-top: 1px solid #c8e6c9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Heart Disease Risk Diagnosis</h1>
+            <p class="subtitle">Fuzzy Logic Expert System</p>
+        </header>
+
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            {% for message in messages %}
+              <div class="flash">{{ message }}</div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+
+        <div class="section">
+            <div class="card">
+                <h2>1. Manual Patient Entry</h2>
+                <form method="POST">
+                    <label>Chest Pain Type</label>
+                    <div class="info">1 = No pain | 3 = Non-anginal pain | 5 = Atypical angina | 7 = Typical angina<br>Higher values indicate more severe pain.</div>
+                    <input type="number" name="chest_pain" step="2" min="1" max="7" required>
+
+                    <label>HbA1c (%)</label>
+                    <div class="info">Average blood glucose over 2–3 months (3.0 – 14.0). Higher values indicate poor diabetes control.</div>
+                    <input type="number" name="hba1c" step="0.1" min="3" max="14" required>
+
+                    <label>HDL Cholesterol (mg/dL)</label>
+                    <div class="info">"Good" cholesterol (10 – 80). Higher is protective for the heart.</div>
+                    <input type="number" name="hdl" min="10" max="80" required>
+
+                    <label>LDL Cholesterol (mg/dL)</label>
+                    <div class="info">"Bad" cholesterol (40 – 200). Lower values are better.</div>
+                    <input type="number" name="ldl" min="40" max="200" required>
+
+                    <label>Maximum Heart Rate (bpm)</label>
+                    <div class="info">Highest heart rate achieved (40 – 160). Usually from exercise test.</div>
+                    <input type="number" name="heart_rate" min="40" max="160" required>
+
+                    <label>Age (years)</label>
+                    <div class="info">20 – 120. Risk increases with age.</div>
+                    <input type="number" name="age" min="20" max="120" required>
+
+                    <label>Resting Blood Pressure (mmHg)</label>
+                    <div class="info">Systolic pressure at rest (80 – 240). Higher values indicate hypertension.</div>
+                    <input type="number" name="blood_pressure" min="80" max="240" required>
+
+                    <button type="submit">Calculate Risk</button>
+                </form>
+
+                {% if manual_result %}
+                    <div class="result">{{ manual_result }}</div>
+                {% endif %}
+            </div>
+
+            <div class="card">
+                <h2>2. Upload Dataset (CSV)</h2>
+                <p style="text-align:center; color:#558b2f; margin-bottom:20px;">Upload a CSV file with standard Cleveland format to analyze all patients.</p>
+                <form method="POST" enctype="multipart/form-data" style="text-align:center;">
+                    <input type="file" name="file" accept=".csv" required style="padding:12px; margin-bottom:15px;">
+                    <button type="submit">Upload & Analyze</button>
+                </form>
+            </div>
+
+            {% if uploaded_stats %}
+                <div class="card">
+                    <h2>Uploaded Dataset Results ({{ uploaded_stats.total }} Patients)</h2>
+                    <div style="text-align:center; padding:20px; background:#c8e6c9; border-radius:12px; font-size:18px;">
+                        Average Risk Score: <strong>{{ uploaded_stats.avg_risk }}</strong><br>
+                        High Risk Patients: <strong>{{ uploaded_stats.high_risk_count }} ({{ uploaded_stats.high_risk_percent }}%)</strong>
+                    </div>
+                    <p style="text-align:center; color:#558b2f;">Sample Results (First & Last 10 Patients)</p>
+                    {{ uploaded_table | safe }}
+                </div>
+            {% endif %}
+        </div>
+
+        <footer>
+            Based on: Md. Liakot Ali et al., "Diagnosis of heart diseases: A fuzzy-logic-based approach", PLOS ONE, 2024<br>
+            Fuzzy expert system with 4320 IF-THEN rules 
+        </footer>
+    </div>
+</body>
+</html>
