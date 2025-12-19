@@ -13,7 +13,7 @@ Web-based Fuzzy Logic Expert System for Heart Disease Risk Diagnosis
 
 ## Live Demo
 🚀 **Try it online (no installation required):**  
-[https://huggingface.co/spaces/yegolzadeh/heart-disease-fuzzy-diagnosis](https://huggingface.co/spaces/yegolzadeh/heart-disease-fuzzy-diagnosis)  
+[https://huggingface.co/spaces/yegolzadeh/heart-disease-fuzzy-diagnosis](https://huggingface.co/spaces/xoloveyg/heart-disease-fuzzy-diagnosis) 
 *(Replace with your actual Space link after deployment)*
 
 ## Project Overview
@@ -21,7 +21,8 @@ This project is a practical implementation of the research paper:
 **"Diagnosis of heart diseases: A fuzzy-logic-based approach"**  
 Md. Liakot Ali, Muhammad Sheikh Sadi, Md. Osman Goni  
 Published in PLOS ONE, February 2024  
-DOI: [10.1371/journal.pone.0293112](https://doi.org/10.1371/journal.pone.0293112)
+DOI: [10.1371/journal.pone.0293112](https://drive.google.com/file/d/1Bn5coYZ4baOP-O6KcNMVRoNCxlFB3yAe/view?usp=drive_link)
+[persian translation](https://drive.google.com/file/d/1EOuBJlB39NDVcf5nKRMlDKMT5dkioPBw/view?usp=drive_link)
 
 The system uses **fuzzy logic** to handle the inherent uncertainty in medical diagnosis, outperforming traditional crisp logic systems. It provides an accessible, cost-effective tool for early detection of cardiovascular risk.
 
