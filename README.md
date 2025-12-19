@@ -1,19 +1,12 @@
-# heart-disease-fuzzy-web-app
-Web-based Fuzzy Logic Expert System for Heart Disease Risk Diagnosis 
-
 # Heart Disease Risk Diagnosis – Fuzzy Logic Expert System
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)  
-[![Python](https://img.shields.io/badge/Python-3.10+-blue)](https://www.python.org)  
-[![Flask](https://img.shields.io/badge/Flask-3.0+-green)](https://flask.palletsprojects.com)  
-[![scikit-fuzzy](https://img.shields.io/badge/scikit--fuzzy-0.5.0-orange)](https://pythonhosted.org/scikit-fuzzy/)  
-[![Hugging Face Spaces](https://img.shields.io/badge/🤗%20Hugging%20Face-Spaces-blue)](https://huggingface.co/spaces/yegolzadeh/heart-disease-fuzzy-diagnosis)
+Web-based Fuzzy Logic Expert System for Heart Disease Risk Diagnosis 
 
 **A modern web application implementing a fuzzy logic-based expert system for heart disease risk assessment, directly inspired by the 2024 PLOS ONE paper achieving 98.08% accuracy on the Cleveland dataset.**
 
 ## Live Demo
 🚀 **Try it online (no installation required):**  
 [https://huggingface.co/spaces/yegolzadeh/heart-disease-fuzzy-diagnosis](https://huggingface.co/spaces/xoloveyg/heart-disease-fuzzy-diagnosis) 
+
 *(Replace with your actual Space link after deployment)*
 
 ## Project Overview
